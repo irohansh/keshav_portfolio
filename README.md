@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Law Portfolio – Keshav Sharma
 
-## Getting Started
+This is a modern, single-page portfolio built with [Next.js](https://nextjs.org) and the App Router.  
+It is tailored for a law graduate with experience in corporate law, banking litigation, insurance, and criminal matters.
 
-First, run the development server:
+All content is currently configured for **Keshav Sharma**. You can fork and adapt it for your own profile, or update the details as your practice evolves.
+
+---
+
+## Running the site locally
+
+From the project root:
 
 ```bash
+npm install   # first time only
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open `http://localhost:3000` in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Where to update your information
 
-## Learn More
+Most of the visible content lives in a few React components:
 
-To learn more about Next.js, take a look at the following resources:
+- `src/app/page.tsx` – overall page layout and all sections (About, Practice Areas, Experience, Education, Skills, Resume, Contact).
+- `src/components/HeroSection.tsx` – hero banner with your name, title, and summary.
+- `src/components/NavBar.tsx` – top navigation with section links.
+- `src/components/Section.tsx` – shared layout wrapper used by each section.
+- `src/components/ExperienceItem.tsx` – reusable card for each internship / role in the “Professional Experience” section.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+You can update text directly in these files, or use them as a template to add more sections and roles.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Personal details
 
-## Deploy on Vercel
+Update the following with your own details:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Name and title**  
+  - `src/components/HeroSection.tsx`  
+  - `src/app/page.tsx` (footer copyright and any references in text)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Contact information**  
+  - `src/app/page.tsx`, `#contact` section:
+    - Phone: `href="tel:+91..."` and the displayed number
+    - Email: `href="mailto:..."` and the displayed address
+    - Location text (e.g., “Panchkula, Haryana”)
+
+- **Practice areas & skills**  
+  - `src/app/page.tsx`, sections:
+    - `#practice-areas` – update headings and bullet points to reflect your work
+    - `#skills` – core skills, research platforms, and languages
+
+- **Experience**  
+  - `src/app/page.tsx`, `#experience` section:
+    - Each `<ExperienceItem />` contains:
+      - `role`
+      - `organization`
+      - `courtOrInstitution`
+      - `period`
+      - `bullets` (array of strings describing your responsibilities/achievements)
+
+- **Education**  
+  - `src/app/page.tsx`, `#education` section
+
+---
+
+## Resume file
+
+The “Download Resume” button in the **Resume** section links to:
+
+- `/Keshav_Sharma_Resume.pdf`
+
+To wire this up:
+
+1. Export your resume as a PDF.
+2. Save it in the `public` folder at the project root with the exact name:
+   - `public/Keshav_Sharma_Resume.pdf`
+3. If you prefer a different filename, update the `href` in:
+   - `src/app/page.tsx`, `#resume` section
+
+---
+
+## Customizing the design
+
+- **Global colors and theme**  
+  - `src/app/globals.css` defines CSS variables and base styles:
+    - Primary colors (navy and dark green), background, card background, and text colors.
+    - Smooth scrolling and page background gradients.
+
+- **Typography & layout**  
+  - Fonts are configured in `src/app/layout.tsx` using `next/font` (Geist).
+  - The page uses a centered content width (`max-w-5xl`) with generous spacing and subtle borders.
+
+You can safely tweak classes (Tailwind utility classes) in the components to adjust spacing, alignment, or visual accents without breaking structure.
+
+---
+
+## Deployment
+
+When you are ready to make your portfolio public, you can deploy it to any Next.js-compatible host (for example, Vercel or Netlify).  
+Follow the host’s Next.js deployment guide and build with:
+
+```bash
+npm run build
+npm start
+```
