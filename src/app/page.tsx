@@ -192,20 +192,15 @@ export default function Home() {
             For a detailed overview of my work experience, academic record, and
             representative matters, you can download my resume in PDF format.
           </p>
-          <p className="text-xs text-muted">
-            Note: The file path is currently a placeholder. Replace{" "}
-            <code className="rounded bg-background px-1 py-0.5">
-              /Keshav_Sharma_Resume.pdf
-            </code>{" "}
-            with your actual file in the <code className="rounded bg-background px-1 py-0.5">public</code>{" "}
-            folder.
-          </p>
           <div className="mt-6 flex justify-center sm:justify-start">
             <a
-              href="/Keshav_Sharma_Resume.pdf"
+              href="https://drive.google.com/uc?export=download&id=1RrsFWM1I1hqdZWOQ5MXpAgg68LboepcU"
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Keshav_Sharma_Resume.pdf"
               className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-soft"
             >
-              Download Resume (PDF)
+              Download Resume
             </a>
           </div>
         </Section>
